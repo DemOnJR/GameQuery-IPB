@@ -147,6 +147,7 @@
     "gq_update_available_suffix": "Update available",
     "gq_update_detected_message": "New version update detected (v%s). Visit %s and download the new version.",
     "gq_settings_api_help": "Need a GameQuery API key? Sign up to GameQuery, then create a free key from: %s",
+    "gq_backup_payload": "Backup JSON payload",
     "acplogs__gameservers_games": "Updated Game Servers game profiles",
     "acplogs__gameservers_settings": "Updated Game Servers settings",
     "acplogs__gameservers_refresh": "Manually refreshed game servers",
