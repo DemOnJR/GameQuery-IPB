@@ -1,0 +1,395 @@
+{
+    "gameservers_servers": {
+        "name": "gameservers_servers",
+        "columns": {
+            "id": {
+                "name": "id",
+                "type": "INT",
+                "length": 10,
+                "allow_null": false,
+                "default": null,
+                "unsigned": true,
+                "auto_increment": true
+            },
+            "name": {
+                "name": "name",
+                "type": "VARCHAR",
+                "length": 120,
+                "allow_null": false,
+                "default": "",
+                "unsigned": false,
+                "auto_increment": false
+            },
+            "game_id": {
+                "name": "game_id",
+                "type": "VARCHAR",
+                "length": 40,
+                "allow_null": false,
+                "default": "",
+                "unsigned": false,
+                "auto_increment": false
+            },
+            "game_name": {
+                "name": "game_name",
+                "type": "VARCHAR",
+                "length": 120,
+                "allow_null": false,
+                "default": "",
+                "unsigned": false,
+                "auto_increment": false
+            },
+            "address": {
+                "name": "address",
+                "type": "VARCHAR",
+                "length": 120,
+                "allow_null": false,
+                "default": "",
+                "unsigned": false,
+                "auto_increment": false
+            },
+            "connect_uri": {
+                "name": "connect_uri",
+                "type": "VARCHAR",
+                "length": 255,
+                "allow_null": false,
+                "default": "",
+                "unsigned": false,
+                "auto_increment": false
+            },
+            "discord_url": {
+                "name": "discord_url",
+                "type": "VARCHAR",
+                "length": 255,
+                "allow_null": false,
+                "default": "",
+                "unsigned": false,
+                "auto_increment": false
+            },
+            "ts3_url": {
+                "name": "ts3_url",
+                "type": "VARCHAR",
+                "length": 255,
+                "allow_null": false,
+                "default": "",
+                "unsigned": false,
+                "auto_increment": false
+            },
+            "vote_links": {
+                "name": "vote_links",
+                "type": "MEDIUMTEXT",
+                "length": null,
+                "allow_null": true,
+                "default": null,
+                "unsigned": false,
+                "auto_increment": false
+            },
+            "enabled": {
+                "name": "enabled",
+                "type": "TINYINT",
+                "length": 1,
+                "allow_null": false,
+                "default": "1",
+                "unsigned": true,
+                "auto_increment": false
+            },
+            "forum_id": {
+                "name": "forum_id",
+                "type": "INT",
+                "length": 10,
+                "allow_null": false,
+                "default": "0",
+                "unsigned": true,
+                "auto_increment": false
+            },
+            "owner_member_id": {
+                "name": "owner_member_id",
+                "type": "INT",
+                "length": 10,
+                "allow_null": false,
+                "default": "0",
+                "unsigned": true,
+                "auto_increment": false
+            },
+            "icon_type": {
+                "name": "icon_type",
+                "type": "VARCHAR",
+                "length": 20,
+                "allow_null": false,
+                "default": "",
+                "unsigned": false,
+                "auto_increment": false
+            },
+            "icon_value": {
+                "name": "icon_value",
+                "type": "VARCHAR",
+                "length": 255,
+                "allow_null": false,
+                "default": "",
+                "unsigned": false,
+                "auto_increment": false
+            },
+            "online": {
+                "name": "online",
+                "type": "TINYINT",
+                "length": 1,
+                "allow_null": true,
+                "default": null,
+                "unsigned": true,
+                "auto_increment": false
+            },
+            "players_online": {
+                "name": "players_online",
+                "type": "INT",
+                "length": 10,
+                "allow_null": true,
+                "default": null,
+                "unsigned": true,
+                "auto_increment": false
+            },
+            "players_max": {
+                "name": "players_max",
+                "type": "INT",
+                "length": 10,
+                "allow_null": true,
+                "default": null,
+                "unsigned": true,
+                "auto_increment": false
+            },
+            "status_json": {
+                "name": "status_json",
+                "type": "MEDIUMTEXT",
+                "length": null,
+                "allow_null": true,
+                "default": null,
+                "unsigned": false,
+                "auto_increment": false
+            },
+            "last_checked": {
+                "name": "last_checked",
+                "type": "INT",
+                "length": 10,
+                "allow_null": true,
+                "default": null,
+                "unsigned": true,
+                "auto_increment": false
+            },
+            "added_by": {
+                "name": "added_by",
+                "type": "INT",
+                "length": 10,
+                "allow_null": false,
+                "default": "0",
+                "unsigned": true,
+                "auto_increment": false
+            },
+            "added_at": {
+                "name": "added_at",
+                "type": "INT",
+                "length": 10,
+                "allow_null": false,
+                "default": "0",
+                "unsigned": true,
+                "auto_increment": false
+            },
+            "updated_at": {
+                "name": "updated_at",
+                "type": "INT",
+                "length": 10,
+                "allow_null": false,
+                "default": "0",
+                "unsigned": true,
+                "auto_increment": false
+            },
+            "position": {
+                "name": "position",
+                "type": "INT",
+                "length": 10,
+                "allow_null": false,
+                "default": "0",
+                "unsigned": true,
+                "auto_increment": false
+            }
+        },
+        "indexes": {
+            "PRIMARY": {
+                "type": "primary",
+                "name": "PRIMARY",
+                "columns": [
+                    "id"
+                ],
+                "length": [
+                    null
+                ]
+            },
+            "server_unique": {
+                "type": "unique",
+                "name": "server_unique",
+                "columns": [
+                    "game_id",
+                    "address"
+                ],
+                "length": [
+                    null,
+                    null
+                ]
+            },
+            "enabled_idx": {
+                "type": "key",
+                "name": "enabled_idx",
+                "columns": [
+                    "enabled"
+                ],
+                "length": [
+                    null
+                ]
+            },
+            "game_idx": {
+                "type": "key",
+                "name": "game_idx",
+                "columns": [
+                    "game_id"
+                ],
+                "length": [
+                    null
+                ]
+            },
+            "forum_idx": {
+                "type": "key",
+                "name": "forum_idx",
+                "columns": [
+                    "forum_id"
+                ],
+                "length": [
+                    null
+                ]
+            },
+            "owner_idx": {
+                "type": "key",
+                "name": "owner_idx",
+                "columns": [
+                    "owner_member_id"
+                ],
+                "length": [
+                    null
+                ]
+            },
+            "position_idx": {
+                "type": "key",
+                "name": "position_idx",
+                "columns": [
+                    "position"
+                ],
+                "length": [
+                    null
+                ]
+            }
+        },
+        "comment": "",
+        "reporting": "count"
+    },
+    "gameservers_history": {
+        "name": "gameservers_history",
+        "columns": {
+            "id": {
+                "name": "id",
+                "type": "INT",
+                "length": 10,
+                "allow_null": false,
+                "default": null,
+                "unsigned": true,
+                "auto_increment": true
+            },
+            "server_id": {
+                "name": "server_id",
+                "type": "INT",
+                "length": 10,
+                "allow_null": false,
+                "default": "0",
+                "unsigned": true,
+                "auto_increment": false
+            },
+            "recorded_hour": {
+                "name": "recorded_hour",
+                "type": "INT",
+                "length": 10,
+                "allow_null": false,
+                "default": "0",
+                "unsigned": true,
+                "auto_increment": false
+            },
+            "online": {
+                "name": "online",
+                "type": "TINYINT",
+                "length": 1,
+                "allow_null": true,
+                "default": null,
+                "unsigned": true,
+                "auto_increment": false
+            },
+            "players_online": {
+                "name": "players_online",
+                "type": "INT",
+                "length": 10,
+                "allow_null": true,
+                "default": null,
+                "unsigned": true,
+                "auto_increment": false
+            },
+            "players_max": {
+                "name": "players_max",
+                "type": "INT",
+                "length": 10,
+                "allow_null": true,
+                "default": null,
+                "unsigned": true,
+                "auto_increment": false
+            }
+        },
+        "indexes": {
+            "PRIMARY": {
+                "type": "primary",
+                "name": "PRIMARY",
+                "columns": [
+                    "id"
+                ],
+                "length": [
+                    null
+                ]
+            },
+            "server_hour_unique": {
+                "type": "unique",
+                "name": "server_hour_unique",
+                "columns": [
+                    "server_id",
+                    "recorded_hour"
+                ],
+                "length": [
+                    null,
+                    null
+                ]
+            },
+            "server_idx": {
+                "type": "key",
+                "name": "server_idx",
+                "columns": [
+                    "server_id"
+                ],
+                "length": [
+                    null
+                ]
+            },
+            "recorded_hour_idx": {
+                "type": "key",
+                "name": "recorded_hour_idx",
+                "columns": [
+                    "recorded_hour"
+                ],
+                "length": [
+                    null
+                ]
+            }
+        },
+        "comment": "",
+        "reporting": "count"
+    }
+}
