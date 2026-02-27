@@ -1,0 +1,13 @@
+{
+    "manage": {
+        "servers": {
+            "servers_manage": "servers_manage"
+        },
+        "games": {
+            "games_manage": "games_manage"
+        },
+        "settings": {
+            "settings_manage": "settings_manage"
+        }
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "manage": {
+        "servers": {
+            "tab": "community",
+            "controller": "servers",
+            "do": "",
+            "restriction": "servers_manage"
+        },
+        "games": {
+            "tab": "community",
+            "controller": "games",
+            "do": "",
+            "restriction": "games_manage"
+        },
+        "settings": {
+            "tab": "community",
+            "controller": "settings",
+            "do": "",
+            "restriction": "settings_manage"
+        }
+    }
+}

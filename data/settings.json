@@ -1,0 +1,32 @@
+[
+    {
+        "key": "gq_api_token",
+        "default": "",
+        "report": "none"
+    },
+    {
+        "key": "gq_api_token_type",
+        "default": "FREE",
+        "report": "none"
+    },
+    {
+        "key": "gq_api_token_email",
+        "default": "",
+        "report": "none"
+    },
+    {
+        "key": "gq_refresh_minutes",
+        "default": "5",
+        "report": "full"
+    },
+    {
+        "key": "gq_last_refresh",
+        "default": "0",
+        "report": "none"
+    },
+    {
+        "key": "gq_game_profiles",
+        "default": "{}",
+        "report": "none"
+    }
+]

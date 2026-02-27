@@ -1,0 +1,22 @@
+{
+    "topLevel": "",
+    "pages": {
+        "gameservers_servers": {
+            "friendly": "servers",
+            "real": "app=gameservers&module=servers&controller=servers",
+            "alias": "server"
+        },
+        "gameservers_server_edit": {
+            "friendly": "server/{@game}/{@address}/edit",
+            "real": "app=gameservers&module=servers&controller=servers&do=edit"
+        },
+        "gameservers_server_votes": {
+            "friendly": "server/{@game}/{@address}/votes",
+            "real": "app=gameservers&module=servers&controller=servers&do=votes"
+        },
+        "gameservers_server": {
+            "friendly": "server/{@game}/{@address}",
+            "real": "app=gameservers&module=servers&controller=servers&do=view"
+        }
+    }
+}

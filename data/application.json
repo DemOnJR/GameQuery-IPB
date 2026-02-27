@@ -1,0 +1,9 @@
+{
+    "application_title": "Game Servers",
+    "app_author": "Custom",
+    "app_directory": "gameservers",
+    "app_protected": 0,
+    "app_website": null,
+    "app_update_check": "https://gamequery.dev/shop/ipbgametracker/changelog",
+    "app_hide_tab": 0
+}

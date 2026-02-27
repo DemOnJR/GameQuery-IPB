@@ -1,0 +1,13 @@
+{
+    "serverStatus": {
+        "class": "\\IPS\\Widget",
+        "restrict": [
+            "sidebar",
+            "cms"
+        ],
+        "default_area": "",
+        "allow_reuse": true,
+        "menu_style": "menu",
+        "embeddable": true
+    }
+}

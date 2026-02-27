@@ -1,0 +1,36 @@
+{
+    "1": {
+        "method": "addColumn",
+        "params": [
+            "gameservers_servers",
+            {
+                "name": "forum_id",
+                "type": "INT",
+                "length": 10,
+                "decimals": null,
+                "values": null,
+                "allow_null": false,
+                "default": "0",
+                "comment": "",
+                "unsigned": true,
+                "auto_increment": false
+            }
+        ]
+    },
+    "2": {
+        "method": "addIndex",
+        "params": [
+            "gameservers_servers",
+            {
+                "type": "key",
+                "name": "forum_idx",
+                "columns": [
+                    "forum_id"
+                ],
+                "length": [
+                    null
+                ]
+            }
+        ]
+    }
+}
