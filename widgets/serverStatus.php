@@ -128,6 +128,7 @@ class serverStatus extends Widget
 	{
 		$limit = max( 1, min( 50, (int) ( $this->configuration['gq_widget_limit'] ?? 5 ) ) );
 		$showOffline = (bool) ( $this->configuration['gq_widget_show_offline'] ?? TRUE );
+		$enableTabs = (bool) ( $this->configuration['gq_widget_enable_tabs'] ?? FALSE );
 
 		$where = array( array( 'enabled=?', 1 ) );
 		if ( !$showOffline )
@@ -136,7 +137,14 @@ class serverStatus extends Widget
 		}
 
 		$orderBy = Db::i()->checkForColumn( 'gameservers_servers', 'position' ) ? 'position ASC, name ASC' : 'online DESC, players_online DESC, name ASC';
-		$servers = iterator_to_array( Db::i()->select( '*', 'gameservers_servers', $where, $orderBy, array( 0, $limit ) ) );
+		if ( $enableTabs )
+		{
+			$servers = iterator_to_array( Db::i()->select( '*', 'gameservers_servers', $where, $orderBy ) );
+		}
+		else
+		{
+			$servers = iterator_to_array( Db::i()->select( '*', 'gameservers_servers', $where, $orderBy, array( 0, $limit ) ) );
+		}
 
 		return $this->output( $servers );
 	}
@@ -156,6 +164,7 @@ class serverStatus extends Widget
 			return "<div><div class='ipsType_light ipsType_medium'>" . $this->escape( Member::loggedIn()->language()->addToStack( 'gq_no_servers' ) ) . "</div></div>";
 		}
 
+		$limit = max( 1, min( 50, (int) ( $this->configuration['gq_widget_limit'] ?? 5 ) ) );
 		$showOwnerAvatars = (bool) ( $this->configuration['gq_widget_show_owner_avatars'] ?? TRUE );
 		$showOwnerNames = (bool) ( $this->configuration['gq_widget_show_owner_names'] ?? TRUE );
 		$showOwnerColumn = ( $showOwnerAvatars OR $showOwnerNames );
@@ -219,6 +228,7 @@ class serverStatus extends Widget
 		$html .= ".gqWidgetTabIcon{display:inline-flex;align-items:center;justify-content:center;line-height:1;font-size:14px;}";
 		$html .= ".gqWidgetTabIcon i{font-size:14px;line-height:1;}";
 		$html .= ".gqWidgetTabIcon img{display:block;width:14px;height:14px;object-fit:cover;border-radius:3px;}";
+		$html .= ".gqWidgetMoreWrap{display:flex;justify-content:center;margin-top:8px;}";
 		$html .= ".gqWidgetList{list-style:none;margin:0;padding:0;}";
 		$html .= ".gqWidgetList--twoCol{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:8px;row-gap:6px;}";
 		$html .= "@media (max-width:900px){.gqWidgetList--twoCol{grid-template-columns:minmax(0,1fr);}}";
@@ -275,7 +285,7 @@ class serverStatus extends Widget
 		$html .= "@container (max-width:380px){.gqWidgetListItem{padding:2px 5px 2px 5px !important;margin-bottom:3px !important;}.gqWidgetServerRow{grid-template-columns:minmax(0,1fr) auto;grid-template-rows:auto;row-gap:0;column-gap:8px;align-items:center;}.gqWidgetName{grid-column:1;grid-row:1;min-height:0;display:block;}.gqWidgetName>.i-flex{width:100%;min-width:0;}.gqWidgetForum{display:none;}.gqWidgetCompactUnder{display:flex;}.gqWidgetPlayers{grid-column:2;grid-row:1;min-height:0;display:flex;flex-direction:column;align-items:flex-end;justify-content:center;gap:0;text-align:right;}.gqWidgetPlayersMain{line-height:1.05;}.gqWidgetPlayersMap{margin-top:1px;font-size:11px;line-height:1.1;max-width:88px;}.gqWidgetIp{display:none !important;}.gqWidgetIpGame{display:none;}.gqWidgetCompactMeta{display:none !important;}.gqWidgetCompactMetaInline{display:inline-flex;}.gqWidgetVoteCol,.gqWidgetOwner{display:none !important;}.gqWidgetVote{border:0 !important;background:none !important;padding:0 !important;line-height:1;}.gqWidgetVote span{display:none !important;}.gqWidgetConnect{border:0 !important;background:none !important;padding:0 !important;width:auto !important;height:auto !important;justify-content:flex-start !important;gap:0 !important;line-height:1 !important;opacity:.7;border-radius:0 !important;box-shadow:none !important;}.gqWidgetConnect:hover{border:0 !important;opacity:1;}.gqWidgetConnect span{display:none !important;}}";
 		$html .= "@media (max-width:420px){.gqWidgetListItem{padding:2px 5px 2px 5px !important;margin-bottom:3px !important;}.gqWidgetServerRow{grid-template-columns:minmax(0,1fr) auto;grid-template-rows:auto;row-gap:0;column-gap:8px;align-items:center;}.gqWidgetName{grid-column:1;grid-row:1;min-height:0;display:block;}.gqWidgetName>.i-flex{width:100%;min-width:0;}.gqWidgetForum{display:none;}.gqWidgetCompactUnder{display:flex;}.gqWidgetPlayers{grid-column:2;grid-row:1;min-height:0;display:flex;flex-direction:column;align-items:flex-end;justify-content:center;gap:0;text-align:right;}.gqWidgetPlayersMain{line-height:1.05;}.gqWidgetPlayersMap{margin-top:1px;font-size:11px;line-height:1.1;max-width:88px;}.gqWidgetIp{display:none !important;}.gqWidgetIpGame{display:none;}.gqWidgetCompactMeta{display:none !important;}.gqWidgetCompactMetaInline{display:inline-flex;}.gqWidgetVoteCol,.gqWidgetOwner{display:none !important;}.gqWidgetVote{border:0 !important;background:none !important;padding:0 !important;line-height:1;}.gqWidgetVote span{display:none !important;}.gqWidgetConnect{border:0 !important;background:none !important;padding:0 !important;width:auto !important;height:auto !important;justify-content:flex-start !important;gap:0 !important;line-height:1 !important;opacity:.7;border-radius:0 !important;box-shadow:none !important;}.gqWidgetConnect:hover{border:0 !important;opacity:1;}.gqWidgetConnect span{display:none !important;}}";
 		$html .= "</style>";
-		$html .= "<div class='gqWidgetRoot'>";
+		$html .= "<div class='gqWidgetRoot' data-gq-limit='{$limit}'>";
 
 		if ( $showTabs )
 		{
@@ -296,8 +306,24 @@ class serverStatus extends Widget
 
 		$html .= "<ul class='{$listClasses}' style='container-type:inline-size;background:transparent;'>";
 
+		$overallIndex = 0;
+		$gameIndexes = array();
+
 		foreach ( $servers as $server )
 		{
+			$tabKeyRaw = $this->gameTabKey( $server );
+			$overallIndex++;
+			if ( !isset( $gameIndexes[ $tabKeyRaw ] ) )
+			{
+				$gameIndexes[ $tabKeyRaw ] = 0;
+			}
+			$gameIndexes[ $tabKeyRaw ]++;
+
+			$allIndex = (int) $overallIndex;
+			$gameIndex = (int) $gameIndexes[ $tabKeyRaw ];
+			$rowVisible = ( $allIndex <= $limit );
+			$rowStyle = $rowVisible ? '' : " style='display:none;'";
+
 			$statusDotClass = 'gqWidgetStatusDot--unknown';
 			$statusLabel = Member::loggedIn()->language()->addToStack( 'gq_status_unknown' );
 
@@ -340,7 +366,7 @@ class serverStatus extends Widget
 			$map = $this->extractMapLabel( $server );
 			$icon = $this->serverIconHtml( $server );
 			$addressEsc = $this->escape( (string) $server['address'] );
-			$gameFilterKey = $this->escape( $this->gameTabKey( $server ) );
+			$gameFilterKey = $this->escape( $tabKeyRaw );
 			$hasMap = ( $map !== '' );
 			$playersMapHtml = $hasMap ? "<div class='gqWidgetPlayersMap'>" . $this->escape( $map ) . "</div>" : '';
 			$playersClass = $hasMap ? 'gqWidgetPlayers gqWidgetPlayers--withMap' : 'gqWidgetPlayers gqWidgetPlayers--single';
@@ -418,7 +444,7 @@ class serverStatus extends Widget
 			$forumUrl = $this->forumCategoryUrl( $server );
 			$forumTitle = $this->escape( Member::loggedIn()->language()->addToStack( 'gq_server_forum_view' ) );
 
-			$html .= "<li class='gqWidgetListItem i-background_2 i-border-radius_box i-padding_2 i-margin-bottom_1' data-gq-game='{$gameFilterKey}'>";
+			$html .= "<li class='gqWidgetListItem i-background_2 i-border-radius_box i-padding_2 i-margin-bottom_1' data-gq-game='{$gameFilterKey}' data-gq-all-index='{$allIndex}' data-gq-game-index='{$gameIndex}'{$rowStyle}>";
 			$html .= "<div class='gqWidgetServerRow'>";
 			$html .= "<div class='gqWidgetName'>";
 			$html .= "<div class='i-flex i-align-items_center i-gap_1' style='min-width:0;'>";
@@ -455,11 +481,12 @@ class serverStatus extends Widget
 		}
 
 		$html .= "</ul>";
+		$html .= "<div class='gqWidgetMoreWrap'><a href='" . $this->escape( $this->listingUrl() ) . "' class='ipsButton ipsButton--veryLight ipsButton--tiny'>+ more</a></div>";
 		$html .= "</div>";
 
 		if ( $showTabs )
 		{
-			$html .= "<script>(function(){var script=document.currentScript;if(!script){return;}var root=script.previousElementSibling;if(!root||root.className.indexOf('gqWidgetRoot')===-1){return;}var tabs=root.querySelectorAll('.gqWidgetTab[data-gq-tab]');var rows=root.querySelectorAll('[data-gq-game]');if(!tabs.length||!rows.length){return;}var setTab=function(key){for(var i=0;i<tabs.length;i++){var tab=tabs[i];var active=tab.getAttribute('data-gq-tab')===key;tab.classList.toggle('is-active',active);tab.setAttribute('aria-selected',active?'true':'false');}for(var j=0;j<rows.length;j++){var row=rows[j];var visible=(key==='all'||row.getAttribute('data-gq-game')===key);row.style.display=visible?'':'none';}};for(var k=0;k<tabs.length;k++){tabs[k].addEventListener('click',function(ev){ev.preventDefault();setTab(this.getAttribute('data-gq-tab'));});}})();</script>";
+			$html .= "<script>(function(){var script=document.currentScript;if(!script){return;}var root=script.previousElementSibling;if(!root||root.className.indexOf('gqWidgetRoot')===-1){return;}var tabs=root.querySelectorAll('.gqWidgetTab[data-gq-tab]');var rows=root.querySelectorAll('[data-gq-game]');if(!tabs.length||!rows.length){return;}var limit=parseInt(root.getAttribute('data-gq-limit')||'5',10);if(!limit||limit<1){limit=5;}var setTab=function(key){for(var i=0;i<tabs.length;i++){var tab=tabs[i];var active=tab.getAttribute('data-gq-tab')===key;tab.classList.toggle('is-active',active);tab.setAttribute('aria-selected',active?'true':'false');}for(var j=0;j<rows.length;j++){var row=rows[j];var matches=(key==='all'||row.getAttribute('data-gq-game')===key);if(!matches){row.style.display='none';continue;}var rank=(key==='all')?parseInt(row.getAttribute('data-gq-all-index')||'0',10):parseInt(row.getAttribute('data-gq-game-index')||'0',10);row.style.display=(rank>0&&rank<=limit)?'':'none';}};for(var k=0;k<tabs.length;k++){tabs[k].addEventListener('click',function(ev){ev.preventDefault();setTab(this.getAttribute('data-gq-tab'));});}})();</script>";
 		}
 
 		return $html;
@@ -493,6 +520,23 @@ class serverStatus extends Widget
 		catch ( \Throwable )
 		{
 			return (string) Url::internal( $queryString, 'front' );
+		}
+	}
+
+	/**
+	 * Build servers listing URL
+	 *
+	 * @return	string
+	 */
+	protected function listingUrl(): string
+	{
+		try
+		{
+			return (string) Url::internal( 'app=gameservers&module=servers&controller=servers', 'front', 'gameservers_servers' );
+		}
+		catch ( \Throwable )
+		{
+			return (string) Url::internal( 'app=gameservers&module=servers&controller=servers', 'front' );
 		}
 	}
 
