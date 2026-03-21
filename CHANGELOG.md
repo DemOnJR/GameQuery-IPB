@@ -6,7 +6,7 @@ All notable changes to this project are documented in this file.
 
 - Updated markdown docs to follow the `gamequery-example` model structure.
 - Refined README sections for cover, screenshots, description, and checklist import.
-- Standardized listing metadata sections (`Built With: PHP`, `Tags: IPB`).
+- Standardized listing metadata sections (`Built With: IPB, PHP`, `Tags: IPB`).
 
 ## [1.0.10]
 
