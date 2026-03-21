@@ -35,8 +35,10 @@ The app adds a complete game server directory to Invision Community with automat
 ## Built With
 
 - PHP
-- Invision Community application framework
-- GameQuery API
+
+## Tags
+
+- IPB
 
 ## Quick Start
 
