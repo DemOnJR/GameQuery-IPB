@@ -1,34 +1,63 @@
-# GameQuery-IPB
+# Game Servers (Invision Community)
 
-`GameQuery-IPB` is an Invision Community application (`applications/gameservers`) for listing game servers and syncing their status from the GameQuery API.
+Game Servers is an Invision Community application (`applications/gameservers`) that integrates with the GameQuery API to publish live game server status, player counts, and quick connect actions for your community.
 
-## Install
+## Main Image
 
-1. Copy this repository's files into your Invision Community app folder so the app path becomes `applications/gameservers`.
-2. In your ACP, go to **System -> Applications**.
-3. Install **Game Servers**.
-4. Open **Game Servers -> Settings** in ACP.
+![Game Servers main preview](https://i.imgur.com/KOLKShT.png)
 
-## Get a free GameQuery API key
+## Gallery
 
-1. Open `https://gamequery.dev/dashboard/keys`.
-2. Sign in (or create an account).
-3. Create a new key on the **FREE** plan.
-4. Copy the token details.
+![Game Servers gallery 01](https://i.imgur.com/KOLKShT.png)
+![Game Servers gallery 02](https://i.imgur.com/HnjUIdg.png)
+![Game Servers gallery 03](https://i.imgur.com/qotUd4i.png)
+![Game Servers gallery 04](https://i.imgur.com/zWHL1PG.png)
+![Game Servers gallery 05](https://i.imgur.com/FR2UwI1.png)
+![Game Servers gallery 06](https://i.imgur.com/lNMNuv8.png)
+![Game Servers gallery 07](https://i.imgur.com/vVpcIQE.png)
+![Game Servers gallery 08](https://i.imgur.com/occ8Q9a.png)
+![Game Servers gallery 09](https://i.imgur.com/GiXvm4w.png)
+![Game Servers gallery 10](https://i.imgur.com/Smy1rKI.png)
 
-## Configure the app in ACP
+## Description
 
-In **Game Servers -> Settings**, fill in:
+The app adds a complete game server directory to Invision Community with automatic polling from GameQuery. Administrators can manage servers in ACP, configure refresh intervals, and expose status blocks/pages to visitors with runtime server data.
 
-- `API Token`: your generated API key
-- `API Token Type`: `FREE`
-- `Token Email`: the email linked to your GameQuery account
-- `Refresh Minutes`: how often to auto-refresh server data
+## Key Features
 
-Save settings when done.
+- ACP management for servers, game profiles, and API settings
+- Manual and scheduled status refresh through background tasks
+- Front-end server listing and detailed server pages
+- Player history charting and runtime data visibility
+- Optional connect links, vote links, Discord links, and TeamSpeak links
+- Configurable server status widget for forum pages
 
-## Add your first server
+## Built With
 
-1. Go to **Game Servers -> Servers** and click **Add Server**.
-2. Enter server details (`Name`, `Game ID`, `Address` in `host:port` format).
-3. Save, then use **Refresh now** to fetch live status immediately.
+- PHP
+- Invision Community application framework
+- GameQuery API
+
+## Quick Start
+
+1. Copy this repository into your Invision Community installation so the path is `applications/gameservers`.
+2. In ACP, open **System -> Applications** and install **Game Servers**.
+3. Open **Game Servers -> Settings**.
+4. Add your GameQuery credentials:
+   - `API Token`
+   - `API Token Type` (`FREE`)
+   - `Token Email`
+   - `Refresh interval (minutes)`
+5. Open **Game Servers -> Servers**, add your first server (`Name`, `Game ID`, `Address`), then click **Refresh Now**.
+
+## Community Market Checklist
+
+- [x] Public repository
+- [x] `README.md` present and descriptive
+- [x] `CHANGELOG.md` present with version sections
+- [x] SPDX-detectable license file present (`LICENSE`, AGPL)
+- [x] Main image and gallery image links included in `README.md`
+
+## License
+
+This project is licensed under the GNU Affero General Public License v3.0. See `LICENSE`.
